@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trading Journal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="meteo.js"></script>
+    <style>
+        /* Add CSS styles for the labels */
+        label[for="stop_euro"], label[for="stop_pips"] {
+            color: red;
+        }
+
+        label[for="take_euro"], label[for="take_pips"] {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+                <a href="https://spirano-it.000webhostapp.com/trading_rules.php"><button class="storico active">Rules</button></a>  
+        <a href="https://spirano-it.000webhostapp.com/trading_jornal.php"><button class="intervento">Trades</button></a>
+        <a href="https://spirano-it.000webhostapp.com/trading_history.php"><button class="storico active">History</button></a>    
+    </div>
+
+    <div class="conteudo_intervento">
+        <form class="form" id="form" action="save-data.php" method="post" enctype="multipart/form-data">
+            <fieldset style="width: 300px;">
+                
+                <table>
+                     <tr>
+                        <td>Conta:</td>
+                        <td class="preencher">
+                            <select name="conta" id="conta" class="select">
+                                <option value="">Selezione</option>
+                                <option value="30454345">30454345</option>
+                                <option value="1040136788">1040136788</option>
+                                
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cabecalho">Data:</td>
+                        <td class="preencher">
+                            <input type="date" name="Data" id="data" class="input" value="<?php echo date('Y-m-d'); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                      
+       <tr>
+                        <td class="cabecalho">Ativo:</td>
+                        <td class="preencher">
+                            <select name="Ativo" id="Ativo" class="select">
+                                <option value="">Selezione</option>
+                                <option value="EUR/USD">EUR/USD</option>
+                                <option value="GBP/USD">GBP/USD</option>
+                                <option value="USD/JPY">USD/JPY</option>
+                                <option value="AUD/USD">AUD/USD</option>
+                                <option value="USD/CAD">USD/CAD</option>
+                                <option value="NZD/USD">NZD/USD</option>
+                                <option value="USD/CHF">USD/CHF</option>
+                                <option value="EUR/GBP">EUR/GBP</option>
+                                <option value="EUR/JPY">EUR/JPY</option>
+                                <option value="GBP/JPY">GBP/JPY</option>
+                                <option value="AUD/JPY">AUD/JPY</option>
+                                <option value="EUR/AUD">EUR/AUD</option>
+                                <option value="XAUUSD">XAUSD</option>
+                                <!-- Adicione mais pares forex conforme necessário -->
+                            </select>
+                        </td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label>D1</label>
+                            <input type="file" id="image1" name="image1" accept="image/*" />                    
+                        </td>
+                    </tr>
+                      <tr>
+                        <td colspan="2">
+                            <label>H1</label>
+                            <input type="file" id="image2" name="image2" accept="image/*" />
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td colspan="2">
+                            <textarea id="entrada" name="entrada" rows="2" cols="50" placeholder="Entrada"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea id="lote" name="lote" rows="2" cols="50" placeholder="Lote"></textarea>
+                        </td>
+                    </tr>
+                    
+                   
+                       <tr>
+                        <td colspan="2">
+                            <label>3</label>
+                            <input type="file" id="image3" name="image3" accept="image/*" />
+                        </td>
+                    </tr>
+                      <tr>
+                        <td colspan="2">
+                            <textarea id="saida" name="saida" rows="2" cols="50" placeholder="Saida"></textarea>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <textarea id="PosTrade" name="PosTrade" rows="2" cols="50" placeholder="Pos Trade"></textarea>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </fieldset>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="submit" id="submit" class="btn btn-info">
+                </td>
+            </tr>
+        </form>
+    </div>
+</body>
+</html>
