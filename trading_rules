@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trading Journal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="meteo.js"></script>
+    <style>
+        /* Add CSS styles for the labels */
+        label[for="stop_euro"], label[for="stop_pips"] {
+            color: red;
+        }
+
+        label[for="take_euro"], label[for="take_pips"] {
+            color: green;
+        }
+
+        /* Add styles for the trading rules section */
+        .trading-rules {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+                <a href="https://spirano-it.000webhostapp.com/trading_rules.php"><button class="storico active">Rules</button></a>  
+        <a href="https://spirano-it.000webhostapp.com/trading_jornal.php"><button class="intervento">Trades</button></a>
+        <a href="https://spirano-it.000webhostapp.com/trading_history.php"><button class="storico active">History</button></a>   
+    </div>
+
+    <div class="conteudo_intervento">
+        <div class="trading-rules">
+            
+            <p><strong>Regra 1:</strong> Não abrir mais que uma operação ao mesmo tempo pois me sobrecarrego em seguir todas as operações.</p>
+            <!-- Add more trading rules here if needed -->
+        </div>
+    </div>
+</body>
+</html>
+
