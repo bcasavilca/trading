@@ -1,0 +1,24 @@
+<?php
+// Inclui o arquivo de configuração do banco de dados
+require_once 'config.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtenha os valores do formulário
+    $id = $_POST['id']; // You need to add an input element with name="id" in your form
+    $comentario = $_POST['comentario']; // Corrected to get the value of the comentario field
+
+    // Atualize os dados no banco de dados
+    $sql = "UPDATE `diario` SET comentario='$comentario' WHERE id='$id'"; // Corrected the query
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Edição salva com sucesso!";
+    } else {
+        echo "Erro ao salvar a edição: " . $conn->error;
+    }
+}
+?>
+
+
+
+
+
