@@ -1,0 +1,188 @@
+<?php
+include_once("config.php");
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- External libraries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/themes/default/style.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/jstree.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="path/to/jquery.tabledit.min.js"></script>
+    <link href="css/jquery-filestyle.min.js">
+    
+<style>.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}</style>
+
+</head>
+<body>
+    <title>manutenzione degli impianto</title>
+</head>
+<body>
+    <div class="menu" id="topo">
+                <a href="https://spirano-it.000webhostapp.com/trading_rules.php"><button class="storico active">Rules</button></a>  
+        <a href="https://spirano-it.000webhostapp.com/trading_jornal.php"><button class="intervento">Trades</button></a>
+        <a href="https://spirano-it.000webhostapp.com/trading_history.php"><button class="storico active">History</button></a>   
+    </div>
+
+    <?php
+    // Crie uma consulta SQL para recuperar os resultados da pesquisa
+    $respostas = "SELECT * FROM diario ORDER BY Data DESC";;
+    $res = mysqli_query($conn, $respostas);
+
+    if (!$res) {
+        echo "Erro na consulta: " . mysqli_error($conn);
+    } else {
+        while ($row_res = mysqli_fetch_assoc($res)) {
+            $id = $row_res['id'];
+            $conta = $row_res['conta'];
+            $data = $row_res['Data'];
+            $ativo = $row_res['Ativo'];
+            $image1 = $row_res['image1']; 
+            $image2 = $row_res['image2']; 
+            $image3 = $row_res['image3'];
+            $image4 = $row_res['image4'];
+            $comentario = $row_res['comentario'];
+            $timestamp = strtotime($data);
+            $new_datetime = date("d-m-Y", $timestamp);
+
+            echo "<fieldset style='width: 300px;'>";
+            echo "<table>";
+            echo "<tr>";
+            echo "<td class='cabecalho'>Conta:  </td>";
+            echo "<td class='preencher'>.$conta.</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td class='cabecalho'>Data:  </td>";
+            echo "<td class='preencher'>".$new_datetime."</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td class='cabecalho'>Id Trade:   </td>";
+            echo "<td class='preencher'>".$id."</td>";
+            echo "</tr>";
+
+            echo "<tr>";
+            echo "<td class='cabecalho'>Ativo: </td>";
+            echo "<td class='preencher'>".$ativo."</td>";
+            echo "</tr>";
+
+
+
+            if (empty($image1)) {
+                echo "<tr>";
+            echo "<td><label class='custom-file-upload'>";
+            echo "<input type='file' class='jfilestyle' style='display: none;'>";
+            echo "Imagem 1";
+            echo "</label></td>";
+                echo "<td></td>";
+                echo "</tr>"; 
+            } else {
+                echo "<tr>";
+            echo "<td><label class='custom-file-upload'>";
+            echo "<input type='file' class='jfilestyle' style='display: none;'>";
+            echo "Imagem 1";
+            echo "</label></td>";
+                echo "<td class='preencher' colspan='2'><a href=".$image1.">".$image1."</a></td>";
+                echo "</tr>"; 
+            }
+            
+
+            if (empty($image2)) {
+                echo "<tr>";
+                echo "<td><label class='custom-file-upload'>";
+                echo "<input type='file' class='jfilestyle' style='display: none;'>";
+                echo "Imagem 2";
+             echo "</label></td>";
+                echo "<td class='preencher'></td>";
+                echo "</tr>"; 
+            } else {
+                echo "<tr>";
+                echo "<td><label class='custom-file-upload'>";
+                echo "<input type='file' class='jfilestyle' style='display: none;'>";
+                echo "Imagem 2";
+                echo "</label></td>";
+                echo "<td class='preencher' colspan='2'><a href=".$image2.">".$image2."</a></td>";
+                echo "</tr>"; 
+            }
+            
+                if (empty($image3)) {
+                echo "<tr>";
+                echo "<td><label class='custom-file-upload'>";
+                echo "<input type='file' class='jfilestyle' style='display: none;'>";
+                echo "Imagem 3";
+             echo "</label></td>";
+                echo "<td class='preencher'></td>";
+                echo "</tr>"; 
+            } else {
+                echo "<tr>";
+                echo "<td><label class='custom-file-upload'>";
+                echo "<input type='file' class='jfilestyle' style='display: none;'>";
+                echo "Imagem 3";
+                echo "</label></td>";
+                echo "<td class='preencher' colspan='3'><a href=".$image3.">".$image3."</a></td>";
+                echo "</tr>"; 
+            }
+            
+                            if (empty($image4)) {
+                echo "<tr>";
+                echo "<td><label class='custom-file-upload'>";
+                echo "<input type='file' class='jfilestyle' style='display: none;'>";
+                echo "Imagem 4";
+             echo "</label></td>";
+                echo "<td class='preencher'></td>";
+                echo "</tr>"; 
+            } else {
+                echo "<tr>";
+                echo "<td><label class='custom-file-upload'>";
+                echo "<input type='file' class='jfilestyle' style='display: none;'>";
+                echo "Imagem 4";
+                echo "</label></td>";
+                echo "<td class='preencher' colspan='3'><a href=".$image4.">".$image4."</a></td>";
+                echo "</tr>"; 
+            }
+
+            echo "<tr>";
+echo "<tr>";
+echo "<td class='cabecalho'>Comentario: </td>";
+echo "<td class='preencher'>";
+echo "<form method='post' action='salvar_comentario.php'>";
+echo "<input type='hidden' name='id' value='" . $id . "'>";
+echo "<textarea name='comentario' style='height: 200px;width: 200px;'>".$comentario."</textarea>";
+echo "</br><button type='submit'>Salvar</button>";
+echo "</form>";
+echo "</td>";
+echo "</tr>";
+
+
+            echo "</table>";
+            echo "</fieldset>";   
+            
+        }
+    }
+    ?>
+
+    <footer>
+        </br></br>
+    </footer>
+</body>
+</html>
